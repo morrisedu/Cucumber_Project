@@ -1,10 +1,11 @@
 package com.cydeo.pages;
 
-import com.cybertek.utility.ConfigReader;
-import com.cybertek.utility.Driver;
+import com.cydeo.utility.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import static com.cydeo.utility.ConfigReader.confRead;
 
 public class WLoginPage {
 
@@ -24,7 +25,7 @@ public class WLoginPage {
     // when this constructor is called
     // This is no arg constructor of this class
     public WLoginPage(){
-       // PageFactory is a selenium class that support Page Object Model
+        // PageFactory is a selenium class that support Page Object Model
         // and it has method called initElements
         // once it's called , it will locate all the element
         // specified using @FindBy annotation with locator
@@ -40,7 +41,7 @@ public class WLoginPage {
      * use config.properties for url
      */
     public void goTo(){
-        Driver.getDriver().navigate().to( ConfigReader.read("weborder_url")    );
+        Driver.getDriver().navigate().to(confRead("weborder_url")    );
     }
 
     /**
@@ -62,11 +63,11 @@ public class WLoginPage {
      * loginErrorMsgPresent  simple return the result of isDisplayed method call
      */
 
-     public boolean loginErrorMsgPresent(){
+    public boolean loginErrorMsgPresent(){
 
-         return  this.errorMsg.isDisplayed()  ;
+        return  this.errorMsg.isDisplayed()  ;
 
-     }
+    }
 
 
 

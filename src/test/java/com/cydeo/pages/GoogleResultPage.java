@@ -47,7 +47,7 @@ public class GoogleResultPage {
         System.out.println("resultLinks.size() = " + resultLinks.size() );
 
         for (WebElement eachLinkElm : resultLinks) {
-        // remove empty text with if statement
+            // remove empty text with if statement
             System.out.println("eachLinkElm.getText() = " + eachLinkElm.getText() );
 
         }

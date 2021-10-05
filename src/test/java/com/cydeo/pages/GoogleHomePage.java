@@ -1,10 +1,11 @@
 package com.cydeo.pages;
 
-import com.cybertek.utility.ConfigReader;
-import com.cybertek.utility.Driver;
+import com.cydeo.utility.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import static com.cydeo.utility.ConfigReader.confRead;
 
 public class GoogleHomePage {
 
@@ -25,7 +26,7 @@ public class GoogleHomePage {
      */
     public void goTo(){
 //        Driver.getDriver().get(  "https://google.com"     );
-        Driver.getDriver().get( ConfigReader.read("google.url" )    );
+        Driver.getDriver().get( confRead("google.url" )    );
     }
 
     /**
@@ -46,7 +47,7 @@ public class GoogleHomePage {
 
     public boolean isAt(){
 
-       return  Driver.getDriver().getTitle().equals("Google") ;
+        return  Driver.getDriver().getTitle().equals("Google") ;
 
     }
 
