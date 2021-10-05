@@ -43,8 +43,6 @@ public class Driver {
                     break;
             }
 
-            obj.manage().window().maximize();
-
             return obj;
         } else {
             return obj;

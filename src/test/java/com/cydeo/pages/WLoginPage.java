@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static com.cydeo.utility.ConfigReader.confRead;
+import static com.cydeo.utility.Driver.getDriver;
 
 public class WLoginPage {
 
@@ -31,7 +32,7 @@ public class WLoginPage {
         // specified using @FindBy annotation with locator
         // initElements accept 2 arguments ,
         // WebDriver instance and Page class instance (this) means current instance of this class.
-        PageFactory.initElements(Driver.getDriver() , this );
+        PageFactory.initElements(getDriver() , this );
 
     }
 
@@ -41,7 +42,7 @@ public class WLoginPage {
      * use config.properties for url
      */
     public void goTo(){
-        Driver.getDriver().navigate().to(confRead("weborder_url")    );
+        getDriver().navigate().to(confRead("weborder_url")    );
     }
 
     /**
@@ -69,8 +70,10 @@ public class WLoginPage {
 
     }
 
-
-
-
-
+    /**
+     * Check if test is at login page
+     */
+    public boolean isAtLoginPage() {
+        return (getDriver().getTitle().equals("Web Orders Login")) ? true : false;
+    }
 }
