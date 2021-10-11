@@ -1,5 +1,5 @@
 # Created by miro at 04/10/2021
-@calculator
+@calculator @non_ui @non-web
 Feature: Calculator
   As a user,
   I should be able to use the calculator to do arithemetic operations

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static com.cydeo.utility.BrowserUtil.waitFor;
 import static com.cydeo.utility.ConfigReader.confRead;
 
 public class GoogleHomePage {
@@ -36,6 +37,7 @@ public class GoogleHomePage {
     public void searchKeyword( String keyword  ){
 
         this.searchBox.sendKeys(  keyword  );
+        waitFor(3);
         this.searchBtn.click();
 
     }

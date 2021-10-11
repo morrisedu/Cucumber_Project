@@ -14,7 +14,7 @@ import static com.cydeo.utility.Driver.getDriver;
  * With tags, you can run certain code before & after each scenario that is tagged with a particular tag
  */
 public class Hooks {
-    @Before
+    @Before("@web-ui")
     public void setupDriver() {
         // Setup implicit wait
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -23,7 +23,7 @@ public class Hooks {
         getDriver().manage().window().maximize();
     }
 
-    @After
+    @After("@web-ui")
     public void tearDown() {
         Driver.closeBrowser();
     }

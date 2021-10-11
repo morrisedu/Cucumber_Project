@@ -1,4 +1,4 @@
-@WebOrder @non_ui
+@WebOrder @web-ui
 Feature: Web order app login
   As a user, I should be able to login
 
