@@ -4,7 +4,6 @@ Feature: Calculator
   As a user,
   I should be able to use the calculator to do arithemetic operations
 
-  @smoke
   Scenario: Add 2 numbers
     Given calculator app is open
     When I add 2 and 2

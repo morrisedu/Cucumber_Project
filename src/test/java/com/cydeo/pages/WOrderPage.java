@@ -4,6 +4,10 @@ import com.cydeo.utility.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class WOrderPage {
 
@@ -60,5 +64,13 @@ public class WOrderPage {
 
     public WOrderPage(){
         PageFactory.initElements(Driver.getDriver(),this);
+    }
+
+    public List<String> availableOptionsDropdown() {
+        Select opt_select = new Select(productDropdown);
+
+        List<String> actual_opt = opt_select.getOptions().stream().map(opt -> opt.getText()).collect(Collectors.toList());
+
+        return actual_opt;
     }
 }

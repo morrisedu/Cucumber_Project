@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static com.cydeo.utility.BrowserUtil.waitFor;
 import static com.cydeo.utility.ConfigReader.confRead;
 
 public class LibLoginPage {
@@ -33,6 +34,7 @@ public class LibLoginPage {
         passwordBox.sendKeys(password);
         loginButton.click();
 
+        waitFor(3);
     }
 
 
