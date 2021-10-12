@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class GoogleSearchStepDef {
     GoogleHomePage google = new GoogleHomePage();
 
-    @Given("user is at homepage")
+    @Given("user is at google search-page")
     public void user_is_at_homepage() {
         google.goTo();
     }

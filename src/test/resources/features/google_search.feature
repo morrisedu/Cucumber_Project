@@ -4,7 +4,7 @@ Feature: Google Search
   As a user, I should be able to search keyword, & get my results
 
   Background:
-    Given user is at homepage
+    Given user is at google search-page
 
   @wip
   Scenario: User search by keyword
