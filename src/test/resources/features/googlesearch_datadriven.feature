@@ -1,4 +1,4 @@
-@web-ui @inp
+@web-ui @google
 Feature: Google search data driven
   Search multiple google keywords
 

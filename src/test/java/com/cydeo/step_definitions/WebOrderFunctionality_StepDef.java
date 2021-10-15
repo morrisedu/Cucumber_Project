@@ -4,12 +4,8 @@ import com.cydeo.pages.WCommonArea;
 import com.cydeo.pages.WOrderPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,9 +13,21 @@ public class WebOrderFunctionality_StepDef {
     WCommonArea common = new WCommonArea();
     WOrderPage order = new WOrderPage();
 
-    @When("we select {string} tab from side bar")
-    public void we_select_tab_from_side_bar(String string) {
-        common.orderTab.click();
+    @When("we select {string} tab from side bar") // we select "View all products" tab from sidebar
+    public void we_select_tab_from_side_bar(String tab_name) {
+        switch (tab_name) {
+            case "View all products":
+                common.viewAllProductTab.click();
+                break;
+            case "View all orders":
+                common.viewAllOrderTab.click();
+                break;
+            case "Order":
+                common.orderTab.click();
+                break;
+            default:
+                System.err.print("Invalid tab");
+        }
     }
 
     @Then("I should see below options in product dropdown list")
@@ -30,5 +38,4 @@ public class WebOrderFunctionality_StepDef {
 
         assertEquals(expected_opt, order.availableOptionsDropdown());
     }
-
 }

@@ -3,10 +3,14 @@ package com.cydeo.step_definitions;
 import com.cydeo.utility.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.cydeo.utility.Driver.closeBrowser;
 import static com.cydeo.utility.Driver.getDriver;
 
 /**
@@ -24,7 +28,17 @@ public class Hooks {
     }
 
     @After("@web-ui")
-    public void tearDown() {
-        Driver.closeBrowser();
+    public void tearDown(Scenario scenario) {
+
+
+        // Taking screenshot if scenario is failed
+        if (scenario.isFailed()) {
+            TakesScreenshot ts = (TakesScreenshot) getDriver();
+            byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+
+        // Close browser
+        closeBrowser();
     }
 }

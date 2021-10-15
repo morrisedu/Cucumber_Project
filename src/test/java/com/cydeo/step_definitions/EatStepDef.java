@@ -4,6 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertEquals;
+
 public class EatStepDef {
     // Alice
     @Given("Alice is hungry")
@@ -35,4 +37,17 @@ public class EatStepDef {
         System.out.println("Ivan faints");
     }
 
+    int start, ate;
+    @Given("there are {int} cucumbers")
+    public void there_are_cucumbers(Integer start) {
+        this.start = start;
+    }
+    @When("I eat {int} cucumbers")
+    public void i_eat_cucumbers(Integer ate) {
+        this.ate = ate;
+    }
+    @Then("I should have {int} cucumbers")
+    public void i_should_have_cucumbers(Integer left) {
+        assertEquals((long) left, (long) (start - ate));
+    }
 }

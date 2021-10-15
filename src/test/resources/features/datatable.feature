@@ -44,3 +44,15 @@ Feature: Demonstrating data tables
       | MyMoney     | 100   | 0.08     |
       | FamilyAlbum | 20    | 0.15     |
       | ScreenSaver | 80    | 0.1      |
+
+  Scenario: Representing table with no first column header
+    Given I have this names
+      |             | firstName | lastName | heroName     |
+      | group1      | Clark     | Kent     | Superman     |
+      | group2      | Bruce     | Wayne    | Batman       |
+      | group3      | Diana     | Prince   | Wonder Woman |
+      | group4      | Barry     | Allen    | Flash        |
+    And I have another table without a header
+      | MyMoney     | 100   | 0.08     |
+      | FamilyAlbum | 20    | 0.15     |
+      | ScreenSaver | 80    | 0.1      |

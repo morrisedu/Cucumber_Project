@@ -1,6 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.WLoginPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -51,8 +52,26 @@ public class DataTableStepDef {
 
     @Given("This is the product reference")
     public void thisIsTheProductReference(List<Map<String, Object>> products_pricelist) {
-        for (Map<String, Object> product : products_pricelist) {
-            System.out.println(product);
-        }
+//        for (Map<String, Object> product : products_pricelist) {
+//            System.out.println(product);
+//        }
+
+        // Map<String, Object> third_row = products_pricelist.get(2);
+        int i = 0;
+
+//        for (Map<String, Object> each : products_pricelist) {
+//            System.out.println(each.get("Price"));
+//            i++;
+//        }
+    }
+
+    @Given("I have this names")
+    public void iHaveThisNames(Map<String, Map<String, String>> names_with_heros) {
+        System.out.println("names_with_heros = " + names_with_heros);
+    }
+
+    @And("I have another table without a header")
+    public void iHaveAnotherTableWithoutAHeader(List<List<String>> product_info) {
+        System.out.println(product_info.get(0).get(1));
     }
 }

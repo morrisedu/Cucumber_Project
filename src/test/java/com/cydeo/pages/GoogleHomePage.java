@@ -36,8 +36,8 @@ public class GoogleHomePage {
      */
     public void searchKeyword( String keyword  ){
 
-        this.searchBox.sendKeys(  keyword  );
-        waitFor(3);
+        this.searchBox.sendKeys(keyword);
+        waitFor(2);
         this.searchBtn.click();
 
     }
