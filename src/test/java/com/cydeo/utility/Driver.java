@@ -14,7 +14,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static com.cydeo.utility.ConfigReader.confRead;
 
 public class Driver {
-    private static WebDriver obj;
+
+    // private static WebDriver obj;
+    // Thread safe driver to ensure each thread has their own browser
+    private static InheritableThreadLocal<WebDriver> driver_pool = new InheritableThreadLocal<>();
     private static String browser = confRead("browser");
 
     private Driver() {}
@@ -24,28 +27,30 @@ public class Driver {
         Will return the same object if it already exists. It will only create a new one if it is null
     */
     public static WebDriver getDriver() {
-        if (obj == null) {
+        if (driver_pool.get() == null) {
             switch (browser.toLowerCase()) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    obj = new ChromeDriver();
+                    driver_pool.set(new ChromeDriver());
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    obj = new FirefoxDriver();
+                    driver_pool.set(new FirefoxDriver());
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();
-                    obj = new EdgeDriver();
+                    driver_pool.set(new EdgeDriver());
                     break;
                 default:
-                    obj = null;
+                    driver_pool.set(null);
+                    System.err.println("Unknown browser type " + browser);
                     break;
             }
 
-            return obj;
+            return driver_pool.get();
         } else {
-            return obj;
+            // If there is an existing one
+            return driver_pool.get();
         }
     }
 
@@ -58,9 +63,9 @@ public class Driver {
             2. if obj isn't null, quit browser & make it null
             ** Once quit, the driver cannot be used again
          */
-        if (obj != null) {
-            obj.quit();
-            obj = null;
+        if (driver_pool.get() != null) {
+            driver_pool.get().quit();
+            driver_pool.set(null);
         }
     }
 }

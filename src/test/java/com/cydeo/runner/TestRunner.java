@@ -20,8 +20,9 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/test_report.html",
                 "json:target/test_report.json", "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target"},
-        dryRun = false,
-        tags = "@web-ui and @google")
+        dryRun = false
+        //tags = "@web-ui and @google"
+        )
 public class TestRunner {
 
 }
