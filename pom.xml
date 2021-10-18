@@ -81,6 +81,7 @@
                     <runOrder>Alphabetical</runOrder>
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <threadCount>2</threadCount>
                     <includes>
                         <include>**/*TestRunner.java</include>
                         <!-- <include>**/*FailedTestRunner.java</include> -->
